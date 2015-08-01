@@ -1,0 +1,1380 @@
+
+%% bare_jrnl_compsoc.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE Computer
+%% Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+% The Computer Society usually requires 12pt for submissions.
+%
+\documentclass[12pt,journal,draftcls,onecolumn]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[12pt,journal,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{latexsym}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{multirow,booktabs}
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+   \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+   \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later. Note also the use of a CLASSOPTION conditional provided by
+% IEEEtran.cls V1.7 and later.
+
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%\usepackage[tight,normalsize,sf,SF]{subfigure}
+%\else
+%\usepackage[tight,footnotesize]{subfigure}
+%\fi
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. Computer Society papers
+% use a larger font and \sffamily font for their captions, hence the
+% additional options needed under compsoc mode. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false]{caption}
+%  \usepackage[font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false]{caption}
+%  \usepackage[font=footnotesize]{subfig}
+%\fi
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley and Jeff Goldberg.
+% This package may be useful when used in conjunction with IEEEtran.cls'
+% captionsoff option. Some IEEE journals/societies require that submissions
+% have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.3.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% For subfigure.sty:
+% \let\MYorigsubfigure\subfigure
+% \renewcommand{\subfigure}[2][\relax]{\MYorigsubfigure[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat/subfig command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\usepackage{subfig}
+\captionsetup[table]{aboveskip=10pt}
+\captionsetup[table]{belowskip=10pt}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{A Novel Method Based on Fuzzy Inference Systems, Multi-agent
+  Systems and Genetic Programming for the Forecast of Financial
+  Markets}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc 
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Amaury Hernandez-Aguila, Mario Garcia-Valdez
+% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem Amaury Hernandez-Aguila is with Instituto Tecnol{\'{o}}gico de Tijuana\protect\\
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+\IEEEcompsocthanksitem Mario Garcia-Valdez is with Instituto Tecnol{\'{o}}gico de Tijuana}}% <-this % stops a space
+%\thanks{Manuscript received \today;}
+
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Computer Science Journal of IEEE,~Vol.~1, No.~1, 2013}%
+{Amaury Hernandez-Aguila {et~al.}: Fuzzy Inference Multi-agent Communities Modelin...}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2007 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society jorunal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEcompsoctitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+\IEEEcompsoctitleabstractindextext{%
+
+
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway. In particular, the Computer Society does
+% not want either math or citations to appear in the abstract.
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+%Computer Society, IEEEtran, journal, \LaTeX, paper, template.
+\end{IEEEkeywords}}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEcompsoctitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynotcompsoctitleabstractindextext when compsoc mode
+% is not selected <OR> if conference mode is selected - because compsoc
+% conference papers position the abstract like regular (non-compsoc)
+% papers do!
+\IEEEdisplaynotcompsoctitleabstractindextext
+% \IEEEdisplaynotcompsoctitleabstractindextext has no effect when using
+% compsoc under a non-conference mode.
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\bibliographystyle{IEEEtran}
+
+
+
+
+
+
+
+\begin{abstract}
+Lorem ipsum dolor sit amet...
+\end{abstract}
+
+\section{Introduction}
+
+Since many decades ago, financial traders have implemented statistical
+models to forecast the time-series, and a field called Technical
+Analysis was created \cite{lo2000foundations}. This type of market
+analysis is characterized by using past financial data to describe
+certain aspects of a market, such as its volatility, trend, and
+momentum \cite{achelis2001technical}. These indicators receive the
+name of Technical Indicators (TI). Some examples of TI are those
+created by Welles Wilder, such as Relative Strength Index (RSI) and
+Average Directional Index \cite{wilder1978new}, and an example of an
+oscillator (a type of TI which usually tells if a market is overbought
+or oversold) is the Stochastic Oscillator
+\cite{schirding1984stochastic}, created by George Lane. This TI are
+mentioned in particular as they are used as input to the Proposed
+Method in this work. In contrast to
+Technical Analysis, Fundamental Analysis relies on the examination of
+the underlying forces that affect a particular financial market (or
+several of them), instead of just relying on the price movements in a
+time-series.
+
+A more modern approach to perform these analyses is to use Machine
+Learning (ML) techniques. Using ML algorithms,
+researchers create regression models using Technical or Fundamental
+Indicators as trainig datasets \cite{Connor2005}.
+Examples of regression techniques are
+autoregression \cite{burg1968new}, symbolic regression
+\cite{billard2002symbolic}, and linear regression
+\cite{kutner2004applied}. Other more elaborated techniques exist in ML
+for regression or curve-fitting tasks, such as the use of Artificial
+Neural Networks \cite{melin2007hybrid} and Support Vector Regression
+\cite{basak2007support}. But a problem that often arises with these
+models is that they can't take into account emergent phenomena: these
+models learn from past behaviors and can't predict what they haven't
+``seen.'' An approach that has shown excellent results in simulating
+these behaviors is Agent-based Modeling (ABM). Citing the work by
+Bonabeau \cite{bonabeau2002agent}, ABM is, ``by its very nature, the
+canonical approach to modeling emergent phenomena,'' and for this
+reason, it is a suitable tool to model complex systems
+\cite{jennings2001agent}, such as financial markets. A concise
+definition of ABM can be found in the work by Gilbert
+\cite{gilbert2008agent}: ``Agent-based modeling is a form of
+computational social science... One creates some kind of simplified
+representation of 'social reality' that serves to express as clearly
+as possible the way in which one believes that reality operates.'' In
+particular, ABM has been proved to be useful to analyze price
+stability in financial markets \cite{Pellizzari2007}, scientometrics
+and domain visualization \cite{Niazi2011}, and in social sciences in
+general \cite{gilbert2008agent}, among others.
+
+This work proposes a method based on ABM to construct a Decision
+Support System (DSS) that aids traders on the process of trading
+financial markets. DSS is not a well defined term, as for some
+researchers is just an interactive system for managers, and for others
+the focus is on understanding and improving the decision process
+\cite{keen1980decision}. Since its inception, DSS have been created to
+aid managers in business-related areas \cite{Sprague1980}
+\cite{little1979decision}, and one can see specialized cases where DSS
+are used to support the decision process when forecasting financial
+markets, such as in the work by Tsang, Yung and Li
+\cite{Tsang2004}. The proposed method is aimed at improving the
+decision process of trading financial markets: the trader receives a
+recommendation of what financial market to trade, as in the work by
+Brown, Pelosi, and Dirska \cite{brown2013dynamic}. But the created
+algorithm goes deeper than just giving recommendations; in the end, a
+novel method for performing regression was created, and the authors
+believe that it can be extended to perform classification tasks. The
+method uses a combination of Fuzzy Inference Systems (FIS), Genetic
+Programming (GP) \cite{poli2008field} \cite{Koza1992} and Multi-agent
+Systems (MAS) \cite{Shoham2009} to produce models that can explain the
+behavior of complex systems such as that of a financial market.
+
+The differences between ABM and MAS are subtle, but have to be noted
+before proceeding. According to Niazi, and Hussain \cite{Niazi2011},
+MAS is a sub-domain of ABM; the principal objective of ABM is to
+provide an explanation of a phenomenon through the interaction of
+agents, while MAS provides a specific application of ABM in order to
+solve a practical problem. The MAS developed in this work belongs to a
+class of Coalitional Games called Constant-sum game \cite{Shoham2009},
+and, in particular, it is a zero-sum game. Agents in the proposed
+method are selfish agents that don't intervene with other agents, but
+there's a higher order process that is dictating how they must
+organize. In this case, the collective work of every agent must give a
+``zero-sum'': the sum of their forces must be equal to the observed
+price, or in other words, they must adjust to the real prices. To
+achieve this, each agent uses a FIS to act intelligently, and its
+Membershif Functions (MF) are found using GP. Specifically, the
+predicates and consequents of the FIS are generated using sum of sines
+that are found using a modified algorithm based on GP. The modified
+algorithm implements communities of agents that perform different
+operations among their agents: crossover, migration, replace and
+mutation. In the end, the developed algorithm gives as result the
+community of agents that obtained the absolute value of the lowest
+Mean-Squared Error (MSE) plus the sum of its agents scores (explained
+in Section \ref{proposed-method}). At first, the authors of this work
+had the hypothesis that the developed system would enable the user to
+examine the MF of each agents' FIS to develop new economic theories,
+but, even though the system achieved remarkable results, the generated
+MF are too chaotic to be interpreted with ease. The novelty of the
+method lies in the use of GP to automatically create Membership
+Functions for the given inputs. Although the currently generated MF
+are too chaotic, this behavior can be changed by modifying the GP
+operators and how these generated functions are transformed into
+MF. Another useful feature that the Proposed Method will enable, is
+that the user of the system can easily inject features as inputs to
+the FIS of the agents, and compare their behaviour to other
+communities that don't have these features. This could help the user
+create new economic theories or find better trading strategies.
+
+
+The structure of this work is as follows: in Section \ref{related-work} an extensive background of related works is given. Special attention was given to this section in order to provide the necessary foundations for the Proposed Method, as it is a new algorithm based on many different technologies and ideas. In Section \ref{proposed-method} the theory of the Proposed Method is given, explaining every aspect of its specification. A number of extensive experiments are presented in Section \ref{experiments-and-results}, along with their results. The experiments were carefully designed in order to provide enough information to support the efficacy of the Proposed Method. Conclusions about the presented work are given in Section \ref{conclusions}.
+  
+
+\section{Related Work}
+\label{related-work}
+
+The layout of this section starts, in Subsection \ref{financial-forecasting} with the mention of a series of works about Financial Forecasting and some of the different techniques that have been used to effectively describe and predict financial markets. Several and different approaches of the design of MAS are presented in a series of works in Subsection \ref{multi-agent-systems}. Methods related to the Proposed Method that used Evolutionary Algorithms in order to optimize or find better architectures in the development of forecasting models are presented in Subsections \ref{genetic-algorithms} and \ref{genetic-programming}. It is important to pay special attention to the works presented in Subsection \ref{genetic-programming}, as the Proposed Method specifically uses Genetic Programming as part of its algorithm. The next Subsection \ref{fuzzy-prediction} presents works where Fuzzy Logic is used in the forecast of financial markets. Finally, a brief mention of some works about Decision Support Systems is presented in Subsection \ref{decision-support-systems}.
+
+\subsection{Financial Forecasting}
+\label{financial-forecasting}
+
+In general, this work involves the use of Machine Learning to forecast
+financial markets. In several efforts, researchers create regression
+models using Technical or Fundamental Indicators as trainig
+datasets. Examples of regression techniques are autoregression
+\cite{burg1968new}, symbolic regression \cite{billard2002symbolic},
+and linear regression \cite{kutner2004applied}.
+
+The work by Brown, Pelosi and Dirska \cite{brown2013dynamic} uses a
+Niche Genetic Algorithm called Dynamic-radius Species-conserving
+Genetic Algorithm (DSGA) to select stocks to purchase from the Dow
+Jones Index. It is important to mention this work because, in the end,
+the DSS that is presented in the Proposed Method does the same kind of
+recommendation as in their work. More importantly, Brown, et al.,
+uploaded the dataset that the authors of the present work used to
+perform the different experiments. In Section
+\ref{experiments-and-results} a comparison to their work is provided,
+along with many other experiments.
+
+The work by Lu, Lee, and Chiu \cite{Lu2009} point out the complexity
+of financial time-series. They note its noisy nature and propose a
+technique to reduce this noise based in a two-stage modeling approach
+using Independent Component Analysis (ICA) and Support Vector
+Regression (SVR). Their approach first uses ICA for generating
+independent components to identify and remove those containing the
+noise, then the remaining components are used to reconstruct the
+forecasting variables which now contain less noise and are the input
+of the SVR forecasting model. Their work was important for the
+development of the Proposed Method, as we believe that the ABM
+approach can then be used to diminish the noise in the market, by
+using a separate class of agents dedicated to model it.
+
+Lastly, it is imperative to mention the use of Neural Networks in
+regression tasks, as it is a technique that has been proved to be very
+effective for this kind of problems. O'Connor and Madden
+\cite{Connor2005} obtained some remarkable results where they obtained
+an annual 23.5\% of Rate of Investment on Dow Jones data used for
+training and testing. Another example is given by Castillo and Melin
+\cite{castillo2001simulation}, where they compare different hybrid
+architectures that combine Neural Networks and Fuzzy Logic for the
+prediction of financial time-series.
+
+\subsection{Multi-agent Systems}
+\label{multi-agent-systems}
+
+The core algorithm of the Proposed Method is, at its highest level, a Multi-agent System. It is therefore paramount to mention some works which use MAS for the forecast or understanding of financial markets.
+
+Klingert and Meyer \cite{Klingert_2012} implement a MAS to analyze the effect of two market mechanisms: the continuous double auction and logarithmic market scoring rule. The purpose of the agent-based simulation model is to see the effect on the number of trades, the accuracy of prediction markets and the standard deviation of the prices in order to prove three hypothesis that they propose. In the end, due to a higher amount of trades and lower standard deviation of the price, their results indicate that the logarithmic market scoring rule seems to have an advantage over the other mechanism.
+
+Sherstov and Stone \cite{Sherstov2005} present three automated stock-trading agents which follow different strategies to predict financial markets, and are compared. The first agent uses Reinforcement Learning, the second a Trend-following strategy, and the last one Market-making. These agents are part of a MAS where the better performing agent is chosen for the testing phase. It is noteworthy to mention that their strategy was used in a live competition and won.
+
+Kendall and Su \cite{Kendall2003} use a MAS to simulate stock markets within which stock traders are modeled as heterogeneous adaptive artificial agents. On average, 80\% of the artificial stock traders were able to trade using successful trading strategies which brings the investors higher returns compared to a simple buy-and-hold strategy.
+
+The authors of this work gained useful knowledge about MAS from two theses. The first one is the work from Grothmann \cite{Grothmann2002}, ``Multi-agent Market Modeling based on Neural Networks.'' This work served as inspiration for the architecture of the Proposed Method. The second thesis is Boer-Sorb{\'{a}}n's ``Agent-Based Simulation of Financial Markets,'' which gave an overview of approaches to describe and understand financial market's dynamics, and motivated the authors of this work to use the approach of Agent-based Computation to perform financial forecast.
+
+As a final mention, Samanidou, et. al. \cite{Samanidou_2007}, provides the reader a very comprehensive overview of Agent-based Modeling, where different techniques to perform this kind of models are discussed.
+
+\subsection{Genetic Algorithms}
+\label{genetic-algorithms}
+
+In the Proposed Method, Genetic Programming is used to generate the Membership Functions (MF) of the Fuzzy Inference Systems that act as the agents' functions. The use of Evolutionary Algorithms to generate MF has been proposed before in several works. What follows is the mention of two works which use Genetic Algorithms to perform such a task, and in the next Subsection, one can find more specialized works where Genetic Programming is used.
+
+Thrift \cite{Thrift1991} explores a nowadays widely used technique which involves the use of a Genetic Algorithm (GA) to discover the parameters of the Membership Functions (MF) in a Fuzzy Inference System to obtain a better performance. Homaifar and McCormick \cite{Homaifar1995} go further and use GA to simultaneously design the MF and the rule sets for fuzzy logic controllers.
+
+\subsection{Genetic Programming}
+\label{genetic-programming}
+
+The previous Subsection served as a little introduction to this Subsection, where Genetic Programming (GP) is used to optimize architectures or perform regression tasks in financial forecast applications. GP has been previously used in many fields of economics. Commonly, as mentioned before, GP is used to create regression models or as a mean to find a better architecture in trading strategies. In the Proposed Method, GP is used to generate the Membership Functions of the Fuzzy Inference Systems that serve as the agents' functions in the MAS, an uncommon technique, as far as the authors of this work know. What follows is a set of works of some common uses of GP in financial applications.
+
+Li and Tsang \cite{Li1999} developed a system that generates decision trees of Technical Indicators using GP. Preliminary results showed that it outperforms commonly used, non-adaptive, individual technical rules with respect to prediction accuracy and average annualized rate of return over two different out-of-sample test periods (three and a half year in each period).
+
+Garcia-Almanza and Tsang \cite{Garcia-Almanza2006} used GP as a regression tool and a technique called Repository Method to model ``rare instances'' or emergent phenomena. The Repository method is a technique that analyses decision trees produced by GP to discover classification rules. It lets model the rare instances in different ways, increasing the possibility of identifying similar cases in the future in the time-series. The work of Garcia-Almanza was useful for the authors of the Proposed Method, as it noted the importance of determining this emergent phenomena in financial markets, and stressed the usefulness of ABM to model it.
+
+An artificial market that models technical, fundamental, and noise traders was developed by Martinez-Jaramillo and Tsang \cite{Martinez-Jaramillo2009}. This work resulted interesting as GP is used to generate the agent functions of the technical traders, and Technical Indicators were used as the operators for the GP algorithm.
+
+Chen and Yeh \cite{Chen2001} propose an architecture based on GP and ABM that takes trader's (agents) search behavior densities, and by using Simulated Annealing, connect these behaviors to psychological factors, such as peer pressure or economic factors such as the standard of living. Their work is very interesting, as their results, in the end, support the Efficient Market Hypothesis.
+
+As a final mention, Bastian \cite{Bastian2000} uses GP to identify the input variables, the rule base, and the involved membership functions of fuzzy models.
+
+\subsection{Fuzzy Prediction}
+\label{fuzzy-prediction}
+
+As has been previously mentioned, in this work each agent uses a Fuzzy Inference System as its agent's function. This agent's function has the objective to determine how much ``trading force'' an agent has to provide, so the sum of all the agent forces give a zero-sum system. Fuzzy logic has successfully been used to predict financial markets in the past. This Subsection provides a series of works which use fuzzy logic and other related techniques to the Proposed Method, as a mean to forecast financial markets.
+
+Ijegwa, et al. \cite{Ijegwa2014}, crated a Fuzzy Inference System that uses four Technical Indicators as input and the output is a recommendation to buy, sell or hold in a financial market. This way, their system aids the trader in the decision making process. They decided to use the Moving Average Convergence/Divergence (MACD), Relative Strength Index (RSI), Stochastic Oscillator (SO) and On-Balance Volume (OBV) as the Technical Indicators that serve as input to the FIS.
+
+Huang, Pasquier, and Quek \cite{Huang2009} describe the application of a hierarchical coevolutionary fuzzy system called HiCEFS for predicting financial time-series. Their system is based on the Technical Indicator Price Percentage Oscillator. An interesting part of this work is their use of Irregular Shaped Membership Functions (ISMF). The employment of ISMF allows their system to construct an accurate predictive model, and it outperfrms the simple buy-and-hold strategy.
+
+As a final mention, a robust system that combines MAS, Fuzzy Logic, Genetic Algorithms, and Moving Averages as input to the Fuzzy Controllers was implemented by Gamil, et al. \cite{Gamil2007}. The MAS helps in the gathering of stock information from different information sources, and aids the processing of the system, as the necessary processing power needed to predict the buy/sell decisions need more power to do the job efficiently, so using different agents for decision support was useful.
+
+\subsection{Decision Support Systems}
+\label{decision-support-systems}
+
+This final Subsection is small, as the Proposed Method doesn't extensively rely on Decision Support Systems (DSS). Here are presented two works related to DSS and financial forecast, and the design and implementation of DSS in general.
+
+The first work is by Keen \cite{keen1980decision}, which helped the authors of the present work to understand DSS. His work presents valuable definitions related to DSS, as well as design guidelines and a series of case studies that illustrate the process of creation of DSS.
+
+Secondly, Tsang, et al. \cite{tsang1998eddie} \cite{tsang2000eddie} \cite{Tsang2004}  \cite{Tsang2008}, present a DSS, over a series of works, for financial forecasting called EDDIE. The system serves to improve the odds of a trader to perform successful trades, and is designed as an interactive decision tool, not as a replacement of expert knowledge. The performance of the system depends on the quality of user's input and the efficiency of its GP search engine.
+
+\section{Proposed Method}
+\label{proposed-method}
+
+\subsection{Decision Support System}
+
+The final outcome of the Proposed Method is a recommendation to buy, sell or hold in a financial market. The system tells the user the direction which the market is going to take (downtrend or uptrend) and its strength, through the use of the Directional Strength indicator (see Subsection \ref{dataset}).
+
+Nevertheless, the underlying method can be used to perform regression tasks, and it could be extended to perform classification tasks in a future work. What follows is the explanation of this underlying method.
+
+\subsection{Communities of Agents}
+\label{communities-of-agents}
+
+As has been noted before, the Proposed Method is based on Agent-based Modeling (ABM). To implement a system based on ABM, the method developed the concept of a Community of agents. A Community is a collection of agents, who are the final actuators in the environment (the simulated financial market). The action of each of the agents in the community involves in providing certain ``strength,'' which is a value between -100 and 100. The sum of all of the forces of the agents in a Community must be equal to the observed or real Directional Strength indicator for a particular record in the dataset. A Community receives its inputs, which are the Technical Indicators ADX(\textit{t}), SO(\textit{t}), and RSI(\textit{t}), and give as output the DS(\textit{t+1}) (the Directional Strength of a future record).
+
+The method creates several Communities, which exchange genetic material of its agents among them, in order to produce better performing Communities, and their fitness is determined using a sum of the Mean-Squared Error and the absolute value of the sum of the strengths of its agents. The use of this summation was determined to be a good fitness indicator by trial and error, but other fitness functions could be used.
+
+\subsection{Fuzzy Inference Systems}
+
+Each of the agents in the Comunnities has a Fuzzy Inference System (FIS) that acts as its agent function. The inputs of this FIS, as has been mentioned before, are the ADX, SO, and RSI Technical Indicators. The output is a real number between -100 and 100 that represents the Directional Strength (DS). To arrive to this output number, one can choose a number of Membership Functions (MF) that act as inputs and a number of MF that act as outputs. By trial and error, the authors found that a number of 5 outputs gave really good results in most cases. As these MF are generated by a GP algorithm, they do not really have an human understandable interpretation. The FIS just defuzzifies the aggregation of the MF at their activation level determined by its inputs, and this will represent a DS for that particular agent.
+
+The rule set is depicted below, and is comprised of 15 rules: 5 outputs for each of the 3 Technical Indicators.
+
+\begin{enumerate}
+\item if ADX is GPpred1 then DS is GPcons1
+\item if ADX is GPpred2 then DS is GPcons2
+\item if ADX is GPpred3 then DS is GPcons3
+\item if ADX is GPpred4 then DS is GPcons4
+\item if ADX is GPpred5 then DS is GPcons5
+
+\item if RSI is GPpred6 then DS is GPcons6
+\item if RSI is GPpred7 then DS is GPcons7
+\item if RSI is GPpred8 then DS is GPcons8
+\item if RSI is GPpred9 then DS is GPcons9
+\item if RSI is GPpred10 then DS is GPcons10
+
+\item if SO is GPpred11 then DS is GPcons11
+\item if SO is GPpred12 then DS is GPcons12
+\item if SO is GPpred13 then DS is GPcons13
+\item if SO is GPpred14 then DS is GPcons14
+\item if SO is GPpred15 then DS is GPcons15
+\end{enumerate}
+
+\subsubsection{Genetic Programming}
+
+In order to create the MF of agents' FIS, a GP algorithm performs a number of operations among the initially generated Communities. These operations are the classical crossover and mutation operations, along with two new operations: migration and replace. The crossover operation simply chooses a subtree of the GP function of the \textit{i}th agent from a Community A, and passes it to the GP function of the \textit{i}th agent from a Community B. A subtree from the Community B is passed to the GP function of the \textit{i}th agent. As a result, two new agents are generated and replace the old agents. To determine what Communities are to be crossed over, a tournament is held where two random Communities are chosen from the population, and the one with the lowest MSE plus the absolute value of the sum of forces (as explained is Subsection \ref{communities-of-agents} is chosen; this will obtain the first Community. This process is repeated to obtain a second Community. As for the mutation operation, a subtree from a Community A is selected and randomly changed to produce a new GP function. The Community to be mutated is randomly selected from the population.
+
+The migration operation is a rather simple one. According to a
+migration chance, an agent from a Community A will get interchanged
+with another agent from a Community B. In order to determine if this
+interchange is to be performed, the algorithm sees if the sum of the
+forces of Community A is of different sign than the sum of forces of
+Community B. This ensures that the migration will produce a Community
+closer to a zero-sum (the Community will be closer to the observed or
+real prices). As for the replace operation, a whole new Community is
+generated and replaces the Community with the highest absolute value
+of the MSE plus sum of forces. All the four operations have a
+pre-established chance of occurring (except for the replace chance,
+which is currently being dynamically adapted by using a FIS. See
+Subsection \ref{dynamic-adaptation-of-the-replace-chance}). One can
+see a flowchart of the general process in Figure
+\ref{flowchart-without-dynamic}.
+
+\begin{figure}[h!]
+\caption{Flowchart of the Proposed Method with Constant Replace Chance}
+\label{flowchart-without-dynamic}
+\begin{center}
+\includegraphics[width=0.4\columnwidth]{figures/flowchart-without/flowchart-without.png}
+\end{center}
+\end{figure}
+
+In addition to this set of operations, the GP algorithm uses the parameters of population size (in this case, the number of Communities), the number of agents per Community, the number of generations, how many inputs the agents will process (in this case, the Technical Indicators), and how many outputs (which, in the end, as has been noted previously, get defuzzified into a Directional Strength value).
+
+The generation of the Membership Functions (MF) is a novel or, at
+least uncommon, method (the authors of this work could not find any
+works that use this specific technique). The GP algorithm uses a sum
+of sines to produce functions that are converted to the MF of the FIS
+of the agents. An example of the functions which represent these MF
+are depicted in Figure \ref{sum-of-sines-mfs}, and a graphical
+representation of an input MF and an output MF are depicted in Figure
+\ref{input-mf} and Figure \ref{output-mf}, respectively. This means
+that the GP algorithm uses only two operators: the sum and the sine
+operators. The sum of sines is represented by the Formula
+\ref{sum-of-sines}.
+
+\begin{figure}[h!]
+\caption{Sum of Sines Functions Representing Membership Functions}
+\label{sum-of-sines-mfs}
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/mfs-lisp-example/mfs-lisp-example.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{Graphical Representation of an Input Membership Function}
+\label{input-mf}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/mf-input/mf-input.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{Graphical Representation of an Output Membership Function}
+\label{output-mf}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/mf-output/mf-output.png}
+\end{center}
+\end{figure}
+
+\begin{equation} \label{sum-of-sines}
+  y = \sum_{i=1}^{n} a_{i} sin(b_{i}x + c_{i})
+\end{equation}
+
+Taking into consideration Formula \ref{sum-of-sines}, the GP algorithm uses the following literals set: \textit{a}, \textit{b}, and \textit{c} are random real numbers, where \textit{a} ranges from 0.0 to 0.3, \textit{b} ranges from 0.0 to 10.0, and \textit{c} ranges from 0.0 to 1.0. These ranges were obtained by trial and error, and other ranges could perform better. An additional real number literal is added to the set, which ranges from -1 to 1, along with the variable \text{x}, which takes the value of the current input (ADX, RSI or SO).
+
+\subsection{Dynamic Adaptation of the Replace Chance}
+\label{dynamic-adaptation-of-the-replace-chance}
+
+The replace chance parameter, instead of being constant, is dynamically adapted using a Fuzzy Inference System (FIS) while the GP process is running. This idea was borrowed from the series of works by Castillo, et al. An example of this dynamic adaptation of parameters can be found in \cite{castillo2015new}, where the authors apply a FIS that controls the value of certain parameters in an Ant Colony Optimization (ACO) algorithm, proposing different architectures. Then these architectures are compared in performance. In the end, the authors prove that the dynamic adaptation of parameters through the use of FIS can greatly improve the performance of ACO. Additionally, one can find a survey of the application of this type of technique in the work by Valdez, Melin and Castillo \cite{valdez2014survey}.
+
+In the Proposed Method, a similar approach is taken, where dynamic adaptation of parameters through FIS is used to avoid the stagnation of the GP algorithm. In this case, a stagnated GP algorithm would mean that it has been producing the same fitness over a number of generations, i.e., the absolute value of MSE plus sum of forces is not being lowered in the last N generations. To calculate this stagnation level, the authores of this work propose the Stagnation Index, which is described by the Formula \ref{si}, where S(P) means the Stagnation Index of P, P is the set of fitnesses over certain number of generations, and C(P) is the count of repeated fitnesses over the last N generations. For example, given the set P = {5, 5, 5, 3, 2, 1}, C(P) = 3.
+
+\begin{equation} \label{si}
+S(P) = 1 - \sqrt{1 \over C(P)}
+\end{equation}
+
+The Stagnation Index is given as input to a FIS, which gives as output a new replace chance for the replace operation. The objective of this dynamic adaptation of parameters is to obtain lower errors in a smaller amount of generations. This is proven in Section \ref{experiments-and-results}. Also, it is worth mentioning that this technique could be applied to the crossover, migration, and mutation chances, but due to a limitation of time, the authors of this work could only apply the technique to one parameter.
+
+A new flowchart depicting the modified GP algorithm is shown in Figure \ref{flowchart-with-dynamic}.
+
+\begin{figure}[h!]
+\caption{Flowchart of the Proposed Method with Dynamic Adaptation of
+  Replace Chance}
+\label{flowchart-with-dynamic}
+\begin{center}
+\includegraphics[width=0.4\columnwidth]{figures/flowchart-with/flowchart-with.png}
+\end{center}
+\end{figure}
+
+\section{Experiments and Results}
+\label{experiments-and-results}
+
+This Section begins explaining the dataset used for the training and
+testing processes. After this explanation, experiments and results
+obtained from implementing the dynamic adaptation of the replace
+chance through the use of a Fuzzy Inference System are
+presented. Then, the Proposed Method is compared against the method
+proposed by Brown, Pelosi, and Dirska \cite{brown2013dynamic}, using
+their proposed dataset. The authors of this work considered that the
+design of the experiment in \cite{brown2013dynamic} were insufficient
+to prove the efficacy of a novel method such as the one proposed in
+this work, and the experiments in this Section were expanded in order
+to better support the efficacy of the system. The experiment by Brown,
+et al., was expanded to 30 trials, instead of just 8. Furthermore, a
+series of experiments (where a winning stock has to be chosen, just
+like in the work by Brown, et al.) with an increasing number of
+generations were performed, and, again, 30 trials are ran instead of
+just 8, with 30 different number of generations. Another set of
+experiments similar to the experiments mentioned before were
+performed, where different configurations of the Proposed Method are
+used. Each of the different configurations is ran for 30 trials, and
+the average Rate of Return is collected.
+
+After the previous set of experiments were performed, the authors
+decided to perform experiments where the forecast of individual stocks
+take place, instead of choosing a stock to buy for each of the weeks
+in the dataset. This set of experiments is more a regression type of
+experiments than a recommendation type. Five stocks were chosen
+where the Proposed Method was applied with different
+configurations. The effectiveness of the experiments is
+determined by how much average Rate of Return is collected.
+
+As a final experiment, the Proposed Method performs a pure regression
+task, where it tries to predict the Directional Strength of the next
+week's record in the dataset.
+
+\subsection{Dataset}
+\label{dataset}
+
+The dataset used in this work was first used by Brown, Pelosi, and Dirska \cite{brown2013dynamic}, and can be found at the UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/) under the name of ``Dow Jones Index Data Set.'' In this work we only used the Open, High, Low, and Close prices, and we obtained the Average Directional Index (ADX), Stochastic Oscillator (SO), and Relative Strength Index (RSI) for the dataset records by using an online tool called FreeStockCharts located at the URL http://www.freestockcharts.com/. Basically, we added the Technical Indicators to the stocks provided in the dataset by Brown et al. using FreeStockCharts, and downloaded the full historical data from the platform. Then, a filtering was performed where only the relevant records were extracted (the same records that are present in the benchmarking dataset).
+
+As a final step, another attribute was added to the dataset, which the authors of this work call ``Directional Strength.'' Basically, this attribute tells how strong a movement was at a particular time in a time-series, and what its direction was (downtrend or uptrend). An absolute value of 100 of the Directional Strength means that it was a very strong movement, where all the traders in that financial market agree to buy or sell, where a value of 0 means strong indecision (and, for example, a Candlestick Pattern called Doji could arise). This Directional Strength indicator could have already been mentioned in the literature, but the authors of this work couldn't find a reference to this particular formula. The formula to calculate the Directional Strength is as follows:
+
+\begin{equation} \label{directional-strength}
+  DS(t) = 100{{C(t) - O(t)} \over {H(t) - L(t)}}
+\end{equation}
+
+Where \textit{t} represents a particular point of time in the time-series, O represents the Open price, H the High, L the Low, and C the Close price.
+
+\subsection{Dynamic Adaptation of the Replace Chance}
+
+To compare the efficacy of the Proposed Method with, and without dynamic adaptation of the replace chance, two experiments were performed and then compared using a hypothesis test. 30 experiments were run with certain configuration, for 1000 generations each, with a constant value of replace chance. Then, 30 experiments were run with the same configuration, for 1000 generations each, but now with a FIS controlling the replace chance according to the Stagnation Index explained in Subsection \ref{dynamic-adaptation-of-the-replace-chance}. The error is recorded for each of the 1000 generations, and after one of the experiments is finished, an average of the error for the 1000 generations is calculated. This process is repeated for each of the 60 experiments. Table \ref{dynamic-vs-non-dynamic-table} shows the averages of these experiments.
+
+\begin{table}
+  \centering
+  \caption{Averages of the 1000 Generations for each of the 30 Experiments}
+    \label{dynamic-vs-non-dynamic-table}
+    \begin{tabular}{ c c | c c}
+        \multicolumn{2}{c}{Without Dynamic Adaptation} & \multicolumn{2}{c}{With Dynamic Adaptation} \\ 
+         1311.36858  & 1046.104578 & 1216.510814 & 1143.389484 \\ 
+         1229.470821 & 1355.991986 & 1241.307708 & 1102.711613 \\ 
+         1295.573386 & 1091.08208  & 1120.805705 & 1249.783318 \\ 
+         1030.289883 & 1327.723752 & 1172.208267 & 1111.148651 \\ 
+         1336.959564 & 1091.20479  & 972.4929395 & 1215.476516 \\ 
+         1384.057403 & 1265.682395 & 1170.073256 & 1169.588612 \\ 
+         1303.139391 & 1246.964085 & 1278.311636 & 1040.093053 \\ 
+         1391.94702  & 1158.730397 & 1154.370559 & 762.2223289 \\ 
+         1125.607147 & 1373.704464 & 1063.93828  & 1207.359942 \\ 
+         1336.603628 & 1130.282865 & 1227.164144 & 1168.572853 \\
+         1308.989252 & 1135.924961 & 1067.38689  & 1162.467748 \\
+         1253.008383 & 1384.15463  & 1273.537452 & 1248.3565   \\
+         1265.489682 & 1487.437018 & 960.6685944 & 1140.389075 \\
+         1247.161813 & 1215.320663 & 1173.268224 & 1309.74542  \\
+         1025.353754 & 1173.167377 & 1169.425716 & 978.8573602 \\
+    \end{tabular} 
+\end{table}
+
+The design of the Fuzzy Inference System is rather simple. The input of the FIS is the Stagnation Index, and the output is the new replace chance for the GP system in that particular iteration or generation. The input Membership Functions are depicted in Figure \ref{dynamic-adaptation-input} and the output Membership Functions are depicted in Figure \ref{dynamic-adaptation-output}. The design of these Membership Functions were obtained according to the subjective opinion of the authors, and by trial and error. The rule set is presented below:
+
+\begin{enumerate}
+\item if SI is Low then RC is Low
+\item if SI is Medium then RC is Medium
+\item if SI is High then RC is High
+\end{enumerate}
+
+In Figure \ref{with-vs-without-dynamic}, one can see how the dynamic
+adaptation of the replace chance helps avoid stagnation of the
+Proposed Method. Nevertheless, a hypothesis test was performed to
+formally prove this hypothesis. The hypothesis test was performed in
+the statistics software Stata, and the results are shown in Figure
+\ref{dynamic-hypothesis-test}. One can see that the hypothesis test
+obtained a t-score of -3.3529, where the critical t value for a 95\%
+confidence interval is -2.0018. As a conclusion, the null hypothesis
+is rejected (which is that the average of the error of the 30 averages
+of the experiments with dynamic adaptation of the replace chance is
+greater than or equal than the averages without the dynamic
+adaptation), and this means that the Proposed Method with dynamic
+adaptation of the replace chance outperforms the Proposed Method with
+a constant value of replace chance.
+
+\begin{figure}[h!]
+\caption{Input for the Dynamic Adaptation of the Replace Chance}
+\label{dynamic-adaptation-input}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/stagnation-input/stagnation-input.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{Output for the Dynamic Adaptation of the Replace Chance}
+\label{dynamic-adaptation-output}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/stagnation-output/stagnation-output.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{Dynamic Adaptation of Replace Chance vs Constant Replace
+  Chance}
+\label{with-vs-without-dynamic}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/fis-vs-no-fis/fis-vs-no-fis.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\caption{Hypothesis Test for the Dynamic Adaptation of the Replace
+  Chance}
+\label{dynamic-hypothesis-test}
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{figures/dynamic-parameter-statistical-test/dynamic-parameter-statistical-test.png}
+\end{center}
+\end{figure}
+
+\clearpage
+
+\subsection{Stock Selection}
+
+In all of the following experiments, the dataset provided in \cite{brown2013dynamic} is used, and the first Quarter (12 records) of each stock is used for training, and the second Quarter (13 records) is used for testing.
+
+\subsubsection{Comparison against Brown, et al. results}
+
+Brown, et al. \cite{brown2013dynamic} used their method to run a set of 8 trials, where the purpose of the experiment is to choose what the algorithm considers will be the better performing stock to buy for the next week. In the end, a single trial sums the Rate of Return from buying all the stocks that were chosen by the algorithm. In their work, they present a table showing what stocks were chosen and what was the total Rate of Return of their best trial (which in their case was the 4th trial). Then, they illustrate the results of all the trials in a similar chart to Figure \ref{8-trials}, and they provide an average of the 8 trials.
+
+The authors of this work don't consider this experiment to be enough to prove the efficacy of the Proposed Method. Nevertheless, we provide an experiment similar to theirs in order to compare results. Table \ref{best-trial-table} shows what stocks our Proposed Method chose, along with the total Rate of Return. In this case, it outperformed the results obtained by Brown, et al.
+    
+\begin{table}
+  \centering
+  \caption{Stocks selection for trial 4} 
+  \label{best-trial-table}
+    \begin{tabular}{ c c c c c c c }
+        Week & Stock & Return &  & Week & Stock & Return \\ 
+        1 & MMM & 0.58265 &  & 8 & MMM & 1.27858 \\ 
+        2 & HD & 1.92256 &  & 9 & IBM & -2.01259 \\ 
+        3 & AA & 3.72861 &  & 10 & INTC & -1.92661 \\ 
+        4 & CSCO & 3.48494 &  & 11 & PFE & 0.896414 \\ 
+        5 & CSCO & 0.285551 &  & 12 & AA & 3.81731 \\ 
+        6 & HD & 0.216626 &  & 13 & PFE & 3.23383 \\ 
+        7 & HD & 0.981194 &  & Total &  & 16.489065 \\ 
+    \end{tabular} 
+\end{table}
+
+As mentioned before, Figure \ref{8-trials} shows a graphical
+representation of the results obtained from the 8 trials, where the
+Quarterly Return and the Average Weekly Return are shown. In this
+case, the average Rate of Return of the 8 trials was 8.1140\%, which
+again outperforms the average obtained by Brown, et al., which was
+7.075\%.
+
+\begin{figure}[htp]
+\caption{Rate of Return of the 8 Trials}
+\label{8-trials}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/percent-return-per-trial/percent-return-per-trial.png}
+\end{center}
+\end{figure}
+
+\subsubsection{Extended Experiments - Constant Configuration, Increasing Generations}
+
+The first extended experiment consists on providing the Proposed
+Method certain configuration (4 communities, 4 agents, 3 inputs, and 5
+outputs) which was shown to give good results on a trial-and-error
+manner. This configuration was run 30 times for 30 different values of
+generations. The results are the average Rates of Return of the 30
+trials, and are depicted in Figure
+\ref{constant-configuration-generations}. This graph shows that the
+Proposed Method tends to get under-trained with a low number of
+generations, begins to throw good results with a moderate number of
+generations, and starts to get over-trained with a higher number of
+generations. With a very high number of generations, the method starts
+acting chaotically. It is noteworthy to mention that the Proposed
+Method never achieved a negative average Rate of Return.
+
+\begin{figure}[htp]
+\caption{Experiments of the Proposed Method with a Constant
+  Configuration and Increasing Generations}
+\label{constant-configuration-generations}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/avg-rate-of-return/avg-rate-of-return.png}
+\end{center}
+\end{figure}
+
+\subsubsection{Extended Experiments - Variable Configurations}
+
+This experiment is similar to that presented by Brown, et al., with the difference that 30 trials are run instead of 8, and different configurations of the Proposed Method are used. The results are shown in Table \ref{table-rates-of-return}.
+
+\begin{table}
+  \centering
+\caption{Proposed Method choosing what Stock to buy - Variable Configurations}
+\label{table-rates-of-return}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c c }
+         & \multicolumn{5}{c}{NUMBER OF AGENTS} \\ 
+        GENERATIONS & 1      & 2      & 5      & 10     & 20     \\
+            2       & 1.27\% & 2.46\% & 2.33\% & 1.68\% & 2.44\% \\ 
+            5       & 3.22\% & 2.57\% & 0.97\% & 2.90\% & 3.70\% \\ 
+            10      & 1.82\% & 1.75\% & 3.04\% & 3.19\% & 3.14\% \\ 
+            20      & 2.32\% & 1.77\% & 2.28\% & 1.76\% & 4.82\% \\ 
+            40      & 3.35\% & 4.07\% & 0.58\% & 4.13\% & 2.53\% \\ 
+            80      & 1.48\% & 0.85\% & 3.34\% & 5.61\% & 2.81\% \\ 
+    \end{tabular} 
+}
+\end{table}
+
+A heatmap is provided in Figure \ref{rates-of-return-heatmap} for the
+reader in order to better appreciate the results obtained.
+
+\begin{figure}[htp]
+\caption{Stock Recommendation Rate of Return Heatmap}
+\label{rates-of-return-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-heatmap/rates-of-return-heatmap.png}
+\end{center}
+\end{figure}
+
+\subsubsection{Extended Experiments - Variable Configurations, Predicion of Single Stocks}
+
+In this series of experiments, instead of choosing what stock to buy, a single stock is chosen, and the algorithm had to determine if the trader had to buy or sell that particular stock. The following tables show the Rate of Return achieved, along with the number of correct predictions (if the trader should sell or buy) enclosed in parentheses. The results are shown for each of the configurations in the following Tables (\ref{aa-ror-table} \ref{csco-ror-table} \ref{ibm-ror-table} \ref{ko-ror-table} \ref{msft-ror-table}), along with corresponding Heatmaps (\ref{aa-ror-heatmap} \ref{csco-ror-heatmap} \ref{ibm-ror-heatmap} \ref{ko-ror-heatmap} \ref{msft-ror-heatmap}) that help the reader see what configurations worked better.
+
+\begin{table}
+  \centering
+\caption{American Airlines Rates of Return}
+\label{aa-ror-table}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2           & 4           & 6          & 8           \\ 
+        5           & -5.77\% (6) & 6.50\% (8)  & 9.57\% (9) & 12.30\% (8) \\ 
+        10          & -5.77\% (6) & 6.50\% (8)  & 7.68\% (8) & 12.30\% (8) \\ 
+        15          & -5.77\% (6) & 6.50\% (8)  & 7.68\% (8) & 12.30\% (8) \\ 
+        30          & -5.77\% (6) & 14.95\% (9) & 7.68\% (8) & 9.13\% (8)  \\ 
+    \end{tabular}
+}
+\end{table}
+  
+\begin{table}
+  \centering
+\caption{CISCO Rates of Return}
+\label{csco-ror-table}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2           & 4           & 6             & 8           \\ 
+        5           & 15.38\% (8) & 26.60\% (10) & 14.42\% (10) & 12.62\% (10) \\ 
+        10          & 15.38\% (8) & 26.60\% (10) & 14.42\% (10) & 19.62\% (10) \\ 
+        15          & 15.38\% (8) & 26.60\% (10) & 13.46\% (9)  & 15.15\% (9) \\ 
+        30          & 13.02\% (7) & 26.60\% (10) & 13.46\% (9)  & 19.62\% (10)  \\ 
+    \end{tabular} 
+}
+\end{table}
+
+\begin{table}
+  \centering
+\caption{IBM Rates of Return}
+\label{ibm-ror-table}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & -10.43\% (5) & -12.17\% (5) & 1.65\% (9) & -4.16\% (6) \\ 
+        10          & -5.76\% (6)  & -4.18\% (7) & -1.85\% (8) & -2.29\% (6) \\ 
+        15          & -9.98\% (6)  & -7.21\% (5) & -6.69\% (7)  & -2.65\% (5) \\ 
+        30          & -4.58\% (6)  & -9.61\% (6) & 2.99\% (8)  & -1.10\% (7)  \\ 
+    \end{tabular} 
+}
+\end{table}
+
+\begin{table}
+  \centering
+\caption{The Coca-Cola Co. Rates of Return}
+\label{ko-ror-table}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & -8.02\% (5)  & 1.86\% (6)  & 2.19\% (7)    & -1.93\% (7) \\ 
+        10          & -9.59\% (4)  & -4.76\% (5) & -3.51\% (7)   & 0.58\% (9) \\ 
+        15          & -7.87\% (6)  & -0.81\% (6) & -1.43\% (7)   & 4.69\% (8) \\ 
+        30          & -8.02\% (5)  & -8.08\% (5) & -4.43\% (6)   & -7.03\% (6)  \\ 
+    \end{tabular} 
+}
+\end{table}
+
+\begin{table}
+  \centering
+\caption{Microsoft Rates of Return}
+\label{msft-ror-table}
+\scalebox{0.7}{
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & 8.35\% (10)  & 12.26\% (11) & 6.19\% (9)   & -1.52\% (8) \\ 
+        10          & 11.82\% (10) & 12.26\% (11) & 1.48\% (7)   & 6.97\% (9) \\ 
+        15          & 8.35\% (10)  & 12.26\% (11) & 11.74\% (10) & 6.97\% (9) \\ 
+        30          & 8.35\% (10)  & 12.26\% (11) & 11.74\% (10) & 2.42\% (9)  \\ 
+    \end{tabular}
+}
+\end{table}
+
+\begin{figure}[htp]
+\caption{American Airlines Rates of Return Heatmap}
+\label{aa-ror-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-aa-heatmap/rates-of-return-aa-heatmap.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{CISCO Rates of Return Heatmap}
+\label{csco-ror-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-csco-heatmap/rates-of-return-csco-heatmap.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{IBM Rates of Return Heatmap}
+\label{ibm-ror-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-ibm-heatmap/rates-of-return-ibm-heatmap.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{The Coca-Cola Co. Rates of Return Heatmap}
+\label{ko-ror-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-ko-heatmap/rates-of-return-ko-heatmap.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{Microsoft Rates of Return Heatmap}
+\label{msft-ror-heatmap}
+\begin{center}
+\includegraphics[width=0.5\columnwidth]{figures/rates-of-return-msft-heatmap/rates-of-return-msft-heatmap.png}
+\end{center}
+\end{figure}
+
+\clearpage
+
+% \subsubsection{Extended Experiments - Constant Configuration, Predicion of Every Stock}
+
+% Experiments were performed for each of the 30 stocks provided in the dataset. As in previous experiments, 12 weeks were used as training and the next 13 weeks were used for testing. The Proposed Method tries to predict if the trader has to sell or buy each of the stocks, and for each successful or unsuccessful prediction, a positive or negative Rate of Return is accumulated, respectively. This process is repeated 30 times for each stock, and the results presented in Table \ref{avg-rates-of-return-table}.
+
+% \begin{table} 
+%     \label{avg-rates-of-return-table}
+%     \begin{tabular}{ c c }
+%         Stock & Average Rate of Return \\ 
+%         AA & -0.9178899\% \\ %0
+%         AXP & -0.09852924\% \\ %1
+%         BA & 1.2301333\% \\ %2 
+%         BAC & 9.677296\% \\ %3 
+%         CAT & -0.029123219\% \\ %4
+%         CSCO & 1.2233882\% \\ %5
+%         CVX & -1.7162496\% \\ %6
+%         DD & 1.6538299\% \\ %7
+%         DIS & -0.2845998\% \\ %8
+%         GE & -1.27476446\% \\ %9
+%         HD & 2.8385108\% \\ %10
+%         HPQ & -1.2462806\% \\ %11
+%         IBM & 6.065919\% \\ %12
+%         INTC & 1.293835\% \\ %13
+%         JNJ & -2.6360352\% \\ %14
+%         JPM & -0.8155595\% \\ %15
+%         KO & 2.2938771\% \\ %16
+%         KRFT & -0.3530073\% \\ %16
+%         MCD & -2.8480105\% \\ %17
+%         MMM & -0.3500379\% \\ %18
+%         MRK & -6.3991796\% \\ %19
+%         MSFT & -4.97989\% \\ %20
+%         PFE & 0.93456393\% \\ %21
+%         PG & -2.9159548\% \\ %22
+%         T & 0.061197344\% \\ %23
+%         TRV & -1.4025264\% \\ %24
+%         UTX & 1.2724808\% \\ %25
+%         VZ & -2.7433705\% \\ %26
+%         WMT & -2.3362381\% \\ %27
+%         XOM & 1.8770896\% \\ %28
+%     \end{tabular} 
+%     \caption{Average Rate of Return for Each of the 30 Stocks} 
+% \end{table}
+  
+\subsubsection{Extended Experiments - Directional Strength Prediction}
+  
+The final experiment consisted on creating regression models to predict the Directional Strength of a stock. The chosen stock was American Airlines, and the configuration of the Proposed Method was 4 communities, 100 agents per community, 3 inputs (the 3 Technical Indicators), and 5 outputs. The high number of agents was chosen to demonstrate how the method behaves with such a higher number. Three experiments were performed: the first one was run for 10 generations, the second one for 100 generations, and the third one for 1000 generations. The objective of this experiment was to demonstrate that with higher generations, the method can decrease the error. The objective was achieved, as can be seen in Table \ref{ds-mse-table}. The curve-fitting charts can be found in Figure \ref{ds-prediction-10} (10 generations), Figure \ref{ds-prediction-100} (100 generations), and Figure \ref{ds-prediction-1000} (1000 generations).
+
+\begin{table}
+  \centering
+    \caption{Directional Strength Prediction}
+    \label{ds-mse-table}
+    \begin{tabular}{ c c }
+        Generations & abs(MSE + sum of forces) \\ 
+        10 & 4430.62 \\ 
+        100 & 2573.73 \\ 
+        1000 & 2310.74 \\ 
+    \end{tabular} 
+\end{table}
+
+\begin{figure}[htp]
+\caption{Directional Strength Simulation - 100 Agents, 10 Generations}
+\label{ds-prediction-10}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/ds-sim-100agents-10gen/ds-sim-100agents-10gen.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{Directional Strength Simulation - 100 Agents, 100
+  Generations}
+\label{ds-prediction-100}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/ds-sim-100agents-100gen/ds-sim-100agents-100gen.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[htp]
+\caption{Directional Strength Simulation - 100 Agents, 1000
+  Generations}
+\label{ds-prediction-1000}
+\begin{center}
+\includegraphics[width=1\columnwidth]{figures/ds-sim-100agents-1000gen/ds-sim-100agents-1000gen.png}
+\end{center}
+\end{figure}
+
+\section{Conclusions}
+\label{conclusions}
+
+The authors of this work performed exhaustive experiments in order to
+support the validity and efficacy of the Proposed
+Method. Nevertheless, the method should keep being validated and
+improved. Regarding the validation of the method, more experiments can
+be performed with other datasets and more comparisons with other works
+can be done. Regarding the improvement of the method, there are many
+areas of the algorithm that are known that can be improved, like
+applying dynamic adaptation of parameters to other parameters of the
+algorithm, such as the crossover, migration, and mutation
+chance. Also, the operators of the Genetic Programming algorithm can
+be modified to different sets in order to obtain better performing
+Membership Functions, and the ranges of the literals can be adjusted
+(or even dynamically adapted) to  improve the overall performance of
+the algorithm.
+
+In conclusion, one can see that the results are very satisfactory, and
+that the system can effectively be used as a Decision Support System,
+and as a technique to create regression models of financial
+time-series.
+  
+
+\bibliography{bibliography/converted_to_latex.bib%
+}
+
+\end{document}
+

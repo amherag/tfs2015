@@ -1,0 +1,72 @@
+\section{Related Work}
+\label{related-work}
+
+The layout of this section starts, in Subsection \ref{financial-forecasting} with the mention of a series of works about Financial Forecasting and some of the different techniques that have been used to effectively describe and predict financial markets. Several and different approaches of the design of MAS are presented in a series of works in Subsection \ref{multi-agent-systems}. Methods related to the Proposed Method that used Evolutionary Algorithms in order to optimize or find better architectures in the development of forecasting models are presented in Subsections \ref{genetic-algorithms} and \ref{genetic-programming}. It is important to pay special attention to the works presented in Subsection \ref{genetic-programming}, as the Proposed Method specifically uses Genetic Programming as part of its algorithm. The next Subsection \ref{fuzzy-prediction} presents works where Fuzzy Logic is used in the forecast of financial markets. Finally, a brief mention of some works about Decision Support Systems is presented in Subsection \ref{decision-support-systems}.
+
+\subsection{Financial Forecasting}
+\label{financial-forecasting}
+
+In general, this work involves the use of Machine Learning to forecast financial markets. There is a plethora of techniques used for regression and for the creation of DSS. It would be inconvenient to list many of them, but some notable examples are presented.
+
+The work by Brown, Pelosi and Dirska \cite{brown2013dynamic} uses a Niche Genetic Algorithm called Dynamic-radius Species-conserving Genetic Algorithm (DSGA) to select stocks to purchase from the Dow Jones Index. It is important to mention this work because, in the end, the DSS that is presented in the Proposed Method does the same kind of recommendation as in their work. More importantly, Brown, et al., uploaded the dataset that the authors of the present work used to perform the different experiments. In Section \ref{experiments-and-results} a comparison to their work is provided, along with many other experiments.
+
+The work by Lu, Lee, and Chiu \cite{Lu2009} point out the complexity of financial time-series. They note its noisy nature and propose a technique to reduce this noise based in a two-stage modeling approach using Independent Component Analysis (ICA) and Support Vector Regression (SVR). Their approach first uses ICA for generating independent components to identify and remove those containing the noise, then the remaining components are used to reconstruct the forecasting variables which now contain less noise and are the input of the SVR forecasting model. Their work was important for the development of the Proposed Method, as we believe that the ABM approach can then be used to diminish the noise in the market, by using a separate class of agents dedicated to model it.
+
+Lastly, it is imperative to mention the use of Neural Networks in regression tasks, as it is a technique that has been proved to be very effective for this kind of problems. O'Connor and Madden \cite{Connor2005} obtained some remarkable results where they obtained an annual 23.5\% of Rate of Investment on Dow Jones data used for training and testing. Another example is given by Castillo and Melin \cite{castillo2001simulation}, where they compare different hybrid architectures that combine Neural Networks and Fuzzy Logic for the prediction of financial time-series.
+
+\subsection{Multi-agent Systems}
+\label{multi-agent-systems}
+
+The core algorithm of the Proposed Method is, at its highest level, a Multi-agent System. It is therefore paramount to mention some works which use MAS for the forecast or understanding of financial markets.
+
+Klingert and Meyer \cite{Klingert_2012} implement a MAS to analyze the effect of two market mechanisms: the continuous double auction and logarithmic market scoring rule. The purpose of the agent-based simulation model is to see the effect on the number of trades, the accuracy of prediction markets and the standard deviation of the prices in order to prove three hypothesis that they propose. In the end, due to a higher amount of trades and lower standard deviation of the price, their results indicate that the logarithmic market scoring rule seems to have an advantage over the other mechanism.
+
+Sherstov and Stone \cite{Sherstov2005} present three automated stock-trading agents which follow different strategies to predict financial markets, and are compared. The first agent uses Reinforcement Learning, the second a Trend-following strategy, and the last one Market-making. These agents are part of a MAS where the better performing agent is chosen for the testing phase. It is noteworthy to mention that their strategy was used in a live competition and won.
+
+Kendall and Su \cite{Kendall2003} use a MAS to simulate stock markets within which stock traders are modeled as heterogeneous adaptive artificial agents. On average, 80\% of the artificial stock traders were able to trade using successful trading strategies which brings the investors higher returns compared to a simple buy-and-hold strategy.
+
+The authors of this work gained useful knowledge about MAS from two theses. The first one is the work from Grothmann \cite{Grothmann2002}, "Multi-agent Market Modeling based on Neural Networks." This work served as inspiration for the architecture of the Proposed Method. The second thesis is Boer-Sorbán's "Agent-Based Simulation of Financial Markets," which gave an overview of approaches to describe and understand financial market's dynamics, and motivated the authors of this work to use the approach of Agent-based Computation to perform financial forecast.
+
+As a final mention, Samanidou, et. al. \cite{Samanidou_2007}, provides the reader a very comprehensive overview of Agent-based Modeling, where different techniques to perform this kind of models are discussed.
+
+\subsection{Genetic Algorithms}
+\label{genetic-algorithms}
+
+In the Proposed Method, Genetic Programming is used to generate the Membership Functions (MF) of the Fuzzy Inference Systems that act as the agents' functions. The use of Evolutionary Algorithms to generate MF has been proposed before in several works. What follows is the mention of two works which use Genetic Algorithms to perform such a task, and in the next Subsection, one can find more specialized works where Genetic Programming is used.
+
+Thrift \cite{Thrift1991} explores a nowadays widely used technique which involves the use of a Genetic Algorithm (GA) to discover the parameters of the Membership Functions (MF) in a Fuzzy Inference System to obtain a better performance. Homaifar and McCormick \cite{Homaifar1995} go further and use GA to simultaneously design the MF and the rule sets for fuzzy logic controllers.
+
+\subsection{Genetic Programming}
+\label{genetic-programming}
+
+The previous Subsection served as a little introduction to this Subsection, where Genetic Programming (GP) is used to optimize architectures or perform regression tasks in financial forecast applications. GP has been previously used in many fields of economics. Commonly, as mentioned before, GP is used to create regression models or as a mean to find a better architecture in trading strategies. In the Proposed Method, GP is used to generate the Membership Functions of the Fuzzy Inference Systems that serve as the agents' functions in the MAS, an uncommon technique, as far as the authors of this work know. What follows is a set of works of some common uses of GP in financial applications.
+
+Li and Tsang \cite{Li1999} developed a system that generates decision trees of Technical Indicators using GP. Preliminary results showed that it outperforms commonly used, non-adaptive, individual technical rules with respect to prediction accuracy and average annualized rate of return over two different out-of-sample test periods (three and a half year in each period).
+
+Garcia-Almanza and Tsang \cite{Garcia-Almanza2006} used GP as a regression tool and a technique called Repository Method to model "rare instances" or emergent phenomena. The Repository method is a technique that analyses decision trees produced by GP to discover classification rules. It lets model the rare instances in different ways, increasing the possibility of identifying similar cases in the future in the time-series. The work of Garcia-Almanza was useful for the authors of the Proposed Method, as it noted the importance of determining this emergent phenomena in financial markets, and stressed the usefulness of ABM to model it.
+
+An artificial market that models technical, fundamental, and noise traders was developed by Martinez-Jaramillo and Tsang \cite{Martinez-Jaramillo2009}. This work resulted interesting as GP is used to generate the agent functions of the technical traders, and Technical Indicators were used as the operators for the GP algorithm.
+
+Chen and Yeh \cite{Chen2001} propose an architecture based on GP and ABM that takes trader's (agents) search behavior densities, and by using Simulated Annealing, connect these behaviors to psychological factors, such as peer pressure or economic factors such as the standard of living. Their work is very interesting, as their results, in the end, support the Efficient Market Hypothesis.
+
+As a final mention, Bastian \cite{Bastian2000} uses GP to identify the input variables, the rule base, and the involved membership functions of fuzzy models.
+
+\subsection{Fuzzy Prediction}
+\label{fuzzy-prediction}
+
+As has been previously mentioned, in this work each agent uses a Fuzzy Inference System as its agent's function. This agent's function has the objective to determine how much "trading force" an agent has to provide, so the sum of all the agent forces give a zero-sum system. Fuzzy logic has successfully been used to predict financial markets in the past. This Subsection provides a series of works which use fuzzy logic and other related techniques to the Proposed Method, as a mean to forecast financial markets.
+
+Ijegwa, et al. \cite{Ijegwa2014}, crated a Fuzzy Inference System that uses four Technical Indicators as input and the output is a recommendation to buy, sell or hold in a financial market. This way, their system aids the trader in the decision making process. They decided to use the Moving Average Convergence/Divergence (MACD), Relative Strength Index (RSI), Stochastic Oscillator (SO) and On-Balance Volume (OBV) as the Technical Indicators that serve as input to the FIS.
+
+Huang, Pasquier, and Quek \cite{Huang2009} describe the application of a hierarchical coevolutionary fuzzy system called HiCEFS for predicting financial time-series. Their system is based on the Technical Indicator Price Percentage Oscillator. An interesting part of this work is their use of Irregular Shaped Membership Functions (ISMF). The employment of ISMF allows their system to construct an accurate predictive model, and it outperfrms the simple buy-and-hold strategy.
+
+As a final mention, a robust system that combines MAS, Fuzzy Logic, Genetic Algorithms, and Moving Averages as input to the Fuzzy Controllers was implemented by Gamil, et al. \cite{Gamil2007}. The MAS helps in the gathering of stock information from different information sources, and aids the processing of the system, as the necessary processing power needed to predict the buy/sell decisions need more power to do the job efficiently, so using different agents for decision support was useful.
+
+\subsection{Decision Support Systems}
+\label{decision-support-systems}
+
+This final Subsection is small, as the Proposed Method doesn't extensively rely on Decision Support Systems (DSS). Here are presented two works related to DSS and financial forecast, and the design and implementation of DSS in general.
+
+The first work is by Keen \cite{keen1980decision}, which helped the authors of the present work to understand DSS. His work presents valuable definitions related to DSS, as well as design guidelines and a series of case studies that illustrate the process of creation of DSS.
+
+Secondly, Tsang, et al. \cite{tsang1998eddie} \cite{tsang2000eddie} \cite{Tsang2004}  \cite{Tsang2008}, present a DSS, over a series of works, for financial forecasting called EDDIE. The system serves to improve the odds of a trader to perform successful trades, and is designed as an interactive decision tool, not as a replacement of expert knowledge. The performance of the system depends on the quality of user's input and the efficiency of its GP search engine.

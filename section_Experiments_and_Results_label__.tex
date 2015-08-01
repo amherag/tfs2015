@@ -1,0 +1,267 @@
+\section{Experiments and Results}
+\label{experiments-and-results}
+
+This Section begins explaining the experiment and results obtained from implementing the dynamic adaptation of the replace chance through the use of a Fuzzy Inference System. Then, the Proposed Method is compared against the method proposed by Brown, Pelosi, and Dirska \cite{brown2013dynamic}, using their proposed dataset. The authors of this work considered that the design of the experiment in \cite{brown2013dynamic} were insufficient to prove the efficacy of a novel method such as the one proposed in this work, and the experiments in this Section were expanded in order to better support the efficacy of the system. The experiment by Brown, et al., was expanded to 30 trials, instead of just 8. Furthermore, a series of experiments (where a winning stock has to be chosen, just like in the work by Brown, et al.) with an increasing number of generations were performed, and, again, 30 trials are ran instead of just 8, with 30 different number of generations. Another set of experiments similar to the experiments mentioned before were performed, where different configurations of the Proposed Method are used. Each of the different configurations is ran for 30 trials, and the average Rate of Return is collected.
+
+After the previous set of experiments were performed, the authors decided to perform experiments where the forecast of individual stocks take place, instead of choosing a stock to buy for each of the weeks in the dataset. This set of experiments is more a regression type of experiments than a recommendation type. First, five stocks were chosen where the Proposed Method was applied with different configurations. Then, each of the stocks in the dataset was evaluated with the Proposed Method using a configuration that was found to be good by trial and error. The effectiveness of the experiments is determined by how much average Rate of Return is collected.
+
+As a final experiment, the Proposed Method performs a pure regression task, where it tries to predict the Directional Strength of the next week's record in the dataset.
+
+\subsection{Dynamic Adaptation of the Replace Chance}
+
+To compare the efficacy of the Proposed Method with, and without dynamic adaptation of the replace chance, two experiments were performed and then compared using a hypothesis test. 30 experiments were run with certain configuration, for 1000 generations each, with a constant value of replace chance. Then, 30 experiments were run with the same configuration, for 1000 generations each, but now with a FIS controlling the replace chance according to the Stagnation Index explained in Subsection \ref{dynamic-adaptation-of-the-replace-chance}. The error is recorded for each of the 1000 generations, and after one of the experiments is finished, an average of the error for the 1000 generations is calculated. This process is repeated for each of the 60 experiments. Table \ref{dynamic-vs-non-dynamic-table} shows the averages of these experiments.
+
+\begin{table}
+    \label{dynamic-vs-non-dynamic-table}
+    \begin{tabular}{ c c | c c}
+        \multicolumn{2}{c}{Without Dynamic Adaptation} & \multicolumn{2}{c}{With Dynamic Adaptation} \\ 
+         1311.36858  & 1046.104578 & 1216.510814 & 1143.389484 \\ 
+         1229.470821 & 1355.991986 & 1241.307708 & 1102.711613 \\ 
+         1295.573386 & 1091.08208  & 1120.805705 & 1249.783318 \\ 
+         1030.289883 & 1327.723752 & 1172.208267 & 1111.148651 \\ 
+         1336.959564 & 1091.20479  & 972.4929395 & 1215.476516 \\ 
+         1384.057403 & 1265.682395 & 1170.073256 & 1169.588612 \\ 
+         1303.139391 & 1246.964085 & 1278.311636 & 1040.093053 \\ 
+         1391.94702  & 1158.730397 & 1154.370559 & 762.2223289 \\ 
+         1125.607147 & 1373.704464 & 1063.93828  & 1207.359942 \\ 
+         1336.603628 & 1130.282865 & 1227.164144 & 1168.572853 \\
+         1308.989252 & 1135.924961 & 1067.38689  & 1162.467748 \\
+         1253.008383 & 1384.15463  & 1273.537452 & 1248.3565   \\
+         1265.489682 & 1487.437018 & 960.6685944 & 1140.389075 \\
+         1247.161813 & 1215.320663 & 1173.268224 & 1309.74542  \\
+         1025.353754 & 1173.167377 & 1169.425716 & 978.8573602 \\
+    \end{tabular} 
+\end{table}
+
+The design of the Fuzzy Inference System is rather simple. The input of the FIS is the Stagnation Index, and the output is the new replace chance for the GP system in that particular iteration or generation. The input Membership Functions are depicted in Figure \ref{dynamic-adaptation-input} and the output Membership Functions are depicted in Figure \ref{dynamic-adaptation-output}. The design of these Membership Functions were obtained according to the subjective opinion of the authors, and by trial and error. The rule set is presented below:
+
+\begin{enumerate}
+\item if SI is Low then RC is Low
+\item if SI is Medium then RC is Medium
+\item if SI is High then RC is High
+\end{enumerate}
+
+In Figure \ref{with-vs-without-dynamic}, one can see how the dynamic adaptation of the replace chance helps avoid stagnation of the Proposed Method. Nevertheless, a hypothesis test was performed to formally prove this hypothesis. The hypothesis test was performed in the statistics software Stata, and the results are shown in Figure \ref{dynamic-hypothesis-test}. One can see that the hypothesis test obtained a t-score of -3.3529, where the critical t value for a 95\% confidence interval is -2.0018. As a conclusion, the null hypothesis is rejected (which is that the average of the error of the 30 averages of the experiments with dynamic adaptation of the replace chance is greater than or equal than the averages without the dynamic adaptation), and this means that the Proposed Method with dynamic adaptation of the replace chance outperforms the Proposed Method with a constant value of replace chance.
+
+\subsection{Stock Selection}
+
+In all of the following experiments, the dataset provided in \cite{brown2013dynamic} is used, and the first Quarter (12 records) of each stock is used for training, and the second Quarter (13 records) is used for testing.
+
+\subsubsection{Comparison against Brown, et al. results}
+
+Brown, et al. \cite{brown2013dynamic} used their method to run a set of 8 trials, where the purpose of the experiment is to choose what the algorithm considers will be the better performing stock to buy for the next week. In the end, a single trial sums the Rate of Return from buying all the stocks that were chosen by the algorithm. In their work, they present a table showing what stocks were chosen and what was the total Rate of Return of their best trial (which in their case was the 4th trial). Then, they illustrate the results of all the trials in a similar chart to Figure \ref{8-trials}, and they provide an average of the 8 trials.
+
+The authors of this work don't consider this experiment to be enough to prove the efficacy of the Proposed Method. Nevertheless, we provide an experiment similar to theirs in order to compare results. Table \ref{best-trial-table} shows what stocks our Proposed Method chose, along with the total Rate of Return. In this case, it outperformed the results obtained by Brown, et al.
+    
+\begin{table}
+    \label{best-trial-table}
+    \begin{tabular}{ c c c c c c c }
+        Week & Stock & Return &  & Week & Stock & Return \\ 
+        1 & MMM & 0.58265 &  & 8 & MMM & 1.27858 \\ 
+        2 & HD & 1.92256 &  & 9 & IBM & -2.01259 \\ 
+        3 & AA & 3.72861 &  & 10 & INTC & -1.92661 \\ 
+        4 & CSCO & 3.48494 &  & 11 & PFE & 0.896414 \\ 
+        5 & CSCO & 0.285551 &  & 12 & AA & 3.81731 \\ 
+        6 & HD & 0.216626 &  & 13 & PFE & 3.23383 \\ 
+        7 & HD & 0.981194 &  & Total &  & 16.489065 \\ 
+    \end{tabular} 
+    \caption{Stocks selection for trial 4} 
+\end{table}
+
+As mentioned before, Figure \ref{8-trials} shows a graphical representation of the results obtained from the 8 trials, where the Quarterly Return and the Average Weekly Return are shown. In this case, the average Rate of Return of the 8 trials was 8.1140\%, which again outperforms the average obtained by Brown, et al., which was 7.075\%.
+
+\subsubsection{Extended Experiments - Constant Configuration, Increasing Generations}
+
+The first extended experiment consists on providing the Proposed Method certain configuration (4 communities, 4 agents, 3 inputs, and 5 outputs) which was shown to give good results on a trial-and-error manner. This configuration was run 30 times for 30 different values of generations. The results are the average Rates of Return of the 30 trials, and are depicted in Figure \ref{constant-configuration-generations}. This graph shows that the Proposed Method tends to get under-trained with a low number of generations, begins to throw good results with a moderate number of generations, and starts to get over-trained with a higher number of generations. With a very high number of generations, the method starts acting chaotically. It is noteworthy to mention that the Proposed Method never achieved a negative average Rate of Return.
+
+\subsubsection{Extended Experiments - Variable Configurations}
+
+This experiment is similar to that presented by Brown, et al., with the difference that 30 trials are run instead of 8, and different configurations of the Proposed Method are used. The results are shown in Table \ref{table-rates-of-return}.
+
+\begin{table}
+\caption{Proposed Method choosing what Stock to buy - Variable Configurations}
+\label{table-rates-of-return}
+    \begin{tabular}{ c c c c c c }
+         & \multicolumn{5}{c}{NUMBER OF AGENTS} \\ 
+        GENERATIONS & 1      & 2      & 5      & 10     & 20     \\
+            2       & 1.27\% & 2.46\% & 2.33\% & 1.68\% & 2.44\% \\ 
+            5       & 3.22\% & 2.57\% & 0.97\% & 2.90\% & 3.70\% \\ 
+            10      & 1.82\% & 1.75\% & 3.04\% & 3.19\% & 3.14\% \\ 
+            20      & 2.32\% & 1.77\% & 2.28\% & 1.76\% & 4.82\% \\ 
+            40      & 3.35\% & 4.07\% & 0.58\% & 4.13\% & 2.53\% \\ 
+            80      & 1.48\% & 0.85\% & 3.34\% & 5.61\% & 2.81\% \\ 
+    \end{tabular} 
+\end{table}
+
+A heatmap is provided in Figure \ref{rates-of-return-heatmap} for the reader in order to better appreciate the results obtained.
+
+\subsubsection{Extended Experiments - Variable Configurations, Predicion of Single Stocks}
+
+In this series of experiments, instead of choosing what stock to buy, a single stock is chosen, and the algorithm had to determine if the trader had to buy or sell that particular stock. The following tables show the Rate of Return achieved, along with the number of correct predictions (if the trader should sell or buy) enclosed in parentheses. The results are shown for each of the configurations in the following Tables (\ref{aa-ror-table} \ref{csco-ror-table} \ref{ibm-ror-table} \ref{ko-ror-table} \ref{msft-ror-table}), along with corresponding Heatmaps (\ref{aa-ror-heatmap} \ref{csco-ror-heatmap} \ref{ibm-ror-heatmap} \ref{ko-ror-heatmap} \ref{msft-ror-heatmap}) that help the reader see what configurations worked better.
+
+\begin{table}
+\caption{American Airlines Rates of Return}
+\label{aa-ror-table}
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2           & 4           & 6          & 8           \\ 
+        5           & -5.77\% (6) & 6.50\% (8)  & 9.57\% (9) & 12.30\% (8) \\ 
+        10          & -5.77\% (6) & 6.50\% (8)  & 7.68\% (8) & 12.30\% (8) \\ 
+        15          & -5.77\% (6) & 6.50\% (8)  & 7.68\% (8) & 12.30\% (8) \\ 
+        30          & -5.77\% (6) & 14.95\% (9) & 7.68\% (8) & 9.13\% (8)  \\ 
+    \end{tabular} 
+\end{table}
+  
+\begin{table}
+\caption{CISCO Rates of Return}
+\label{csco-ror-table}
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2           & 4           & 6             & 8           \\ 
+        5           & 15.38\% (8) & 26.60\% (10) & 14.42\% (10) & 12.62\% (10) \\ 
+        10          & 15.38\% (8) & 26.60\% (10) & 14.42\% (10) & 19.62\% (10) \\ 
+        15          & 15.38\% (8) & 26.60\% (10) & 13.46\% (9)  & 15.15\% (9) \\ 
+        30          & 13.02\% (7) & 26.60\% (10) & 13.46\% (9)  & 19.62\% (10)  \\ 
+    \end{tabular} 
+\end{table}
+
+\begin{table}
+\caption{IBM Rates of Return}
+\label{ibm-ror-table}
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & -10.43\% (5) & -12.17\% (5) & 1.65\% (9) & -4.16\% (6) \\ 
+        10          & -5.76\% (6)  & -4.18\% (7) & -1.85\% (8) & -2.29\% (6) \\ 
+        15          & -9.98\% (6)  & -7.21\% (5) & -6.69\% (7)  & -2.65\% (5) \\ 
+        30          & -4.58\% (6)  & -9.61\% (6) & 2.99\% (8)  & -1.10\% (7)  \\ 
+    \end{tabular} 
+\end{table}
+
+\begin{table}
+\caption{The Coca-Cola Co. Rates of Return}
+\label{ko-ror-table}
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & -8.02\% (5)  & 1.86\% (6)  & 2.19\% (7)    & -1.93\% (7) \\ 
+        10          & -9.59\% (4)  & -4.76\% (5) & -3.51\% (7)   & 0.58\% (9) \\ 
+        15          & -7.87\% (6)  & -0.81\% (6) & -1.43\% (7)   & 4.69\% (8) \\ 
+        30          & -8.02\% (5)  & -8.08\% (5) & -4.43\% (6)   & -7.03\% (6)  \\ 
+    \end{tabular} 
+\end{table}
+
+\begin{table}
+\caption{Microsoft Rates of Return}
+\label{msft-ror-table}
+    \begin{tabular}{ c c c c c }
+         & \multicolumn{4}{c}{TRAINING SET SIZE} \\ 
+        GENERATIONS & 2            & 4           & 6             & 8           \\ 
+        5           & 8.35\% (10)  & 12.26\% (11) & 6.19\% (9)   & -1.52\% (8) \\ 
+        10          & 11.82\% (10) & 12.26\% (11) & 1.48\% (7)   & 6.97\% (9) \\ 
+        15          & 8.35\% (10)  & 12.26\% (11) & 11.74\% (10) & 6.97\% (9) \\ 
+        30          & 8.35\% (10)  & 12.26\% (11) & 11.74\% (10) & 2.42\% (9)  \\ 
+    \end{tabular} 
+\end{table}
+
+\subsubsection{Extended Experiments - Constant Configuration, Predicion of Every Stock}
+
+Experiments were performed for each of the 30 stocks provided in the dataset. As in previous experiments, 12 weeks were used as training and the next 13 weeks were used for testing. The Proposed Method tries to predict if the trader has to sell or buy each of the stocks, and for each successful or unsuccessful prediction, a positive or negative Rate of Return is accumulated, respectively. This process is repeated 30 times for each stock, and the results presented in Table \ref{avg-rates-of-return-table}.
+
+\begin{table} 
+    \label{avg-rates-of-return-table}
+    \begin{tabular}{ c c }
+        Stock & Average Rate of Return \\ 
+        AA & -0.9178899\% \\ %0
+        AXP & -0.09852924\% \\ %1
+        BA & 1.2301333\% \\ %2 
+        BAC & 9.677296\% \\ %3 
+        CAT & -0.029123219\% \\ %4
+        CSCO & 1.2233882\% \\ %5
+        CVX & -1.7162496\% \\ %6
+        DD & 1.6538299\% \\ %7
+        DIS & -0.2845998\% \\ %8
+        GE & -1.27476446\% \\ %9
+        HD & 2.8385108\% \\ %10
+        HPQ & -1.2462806\% \\ %11
+        IBM & 6.065919\% \\ %12
+        INTC & 1.293835\% \\ %13
+        JNJ & -2.6360352\% \\ %14
+        JPM & -0.8155595\% \\ %15
+        KO & 2.2938771\% \\ %16
+        KRFT & -0.3530073\% \\ %16
+        MCD & -2.8480105\% \\ %17
+        MMM & -0.3500379\% \\ %18
+        MRK & -6.3991796\% \\ %19
+        MSFT & -4.97989\% \\ %20
+        PFE & 0.93456393\% \\ %21
+        PG & -2.9159548\% \\ %22
+        T & 0.061197344\% \\ %23
+        TRV & -1.4025264\% \\ %24
+        UTX & 1.2724808\% \\ %25
+        VZ & -2.7433705\% \\ %26
+        WMT & -2.3362381\% \\ %27
+        XOM & 1.8770896\% \\ %28
+    \end{tabular} 
+    \caption{Average Rate of Return for Each of the 30 Stocks} 
+\end{table}
+  
+\subsubsection{Extended Experiments - Directional Strength Prediction}
+  
+The final experiment consisted on creating regression models to predict the Directional Strength of a stock. The chosen stock was American Airlines, and the configuration of the Proposed Method was 4 communities, 100 agents per community, 3 inputs (the 3 Technical Indicators), and 5 outputs. The high number of agents was chosen to demonstrate how the method behaves with such a higher number. Three experiments were performed: the first one was run for 10 generations, the second one for 100 generations, and the third one for 1000 generations. The objective of this experiment was to demonstrate that with higher generations, the method can decrease the error. The objective was achieved, as can be seen in Table \ref{ds-mse-table}. The curve-fitting charts can be found in Figure \ref{ds-prediction-10} (10 generations), Figure \ref{ds-prediction-100} (100 generations), and Figure \ref{ds-prediction-1000} (1000 generations).
+
+\begin{table}
+    \caption{Directional Strength Prediction}
+    \label{ds-mse-table}
+    \begin{tabular}{ c c }
+        Generations & abs(MSE + sum of forces) \\ 
+        10 & 4430.62 \\ 
+        100 & 2573.73 \\ 
+        1000 & 2310.74 \\ 
+    \end{tabular} 
+\end{table}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
